@@ -123,7 +123,7 @@ const Hero = () => {
 
       {/* Main content */}
       <motion.div
-        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full pt-20 md:pt-24"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full pt-20 md:pt-24 pb-24 sm:pb-28"
         style={{ y: isMobile ? 0 : contentY, opacity }}
         variants={containerVariants}
         initial="hidden"
