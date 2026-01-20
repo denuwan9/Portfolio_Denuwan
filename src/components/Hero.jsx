@@ -123,14 +123,14 @@ const Hero = () => {
 
       {/* Main content */}
       <motion.div
-        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full pt-20 md:pt-24"
         style={{ y: isMobile ? 0 : contentY, opacity }}
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Greeting */}
-        <motion.div variants={itemVariants} className="mb-4 sm:mb-6">
+        <motion.div variants={itemVariants} className="mb-6 sm:mb-8">
           <span className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-dark-700/50 border border-white/10 backdrop-blur-sm">
             <span className="w-2 h-2 rounded-full bg-neon-green animate-pulse mr-2" />
             <span className="text-xs sm:text-sm text-gray-300 font-mono">
@@ -216,7 +216,7 @@ const Hero = () => {
         {/* Social Links */}
         <motion.div
           variants={itemVariants}
-          className="flex items-center justify-center gap-4 sm:gap-6"
+          className="flex items-center justify-center gap-4 sm:gap-6 mb-16 sm:mb-20"
         >
           {[
             { href: 'https://github.com/denuwanyasanga', icon: FiGithub, label: 'GitHub' },
@@ -241,7 +241,7 @@ const Hero = () => {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 z-20"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 1.5 }}
