@@ -87,10 +87,19 @@ const About = () => {
               <div className="relative">
                 <div className="glass-card p-4 sm:p-6 md:p-8">
                   <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 text-center sm:text-left">
-                    {/* Avatar placeholder */}
+                    {/* Profile Image */}
                     <div className="relative flex-shrink-0">
                       <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-neon-cyan to-neon-purple p-0.5">
-                        <div className="w-full h-full rounded-2xl bg-dark-800 flex items-center justify-center">
+                        <img
+                          src="/Portfolio_Denuwan/profile.jpg"
+                          alt="Denuwan Yasanga"
+                          className="w-full h-full rounded-2xl object-cover"
+                          onError={(e) => {
+                            e.target.style.display = 'none'
+                            e.target.nextSibling.style.display = 'flex'
+                          }}
+                        />
+                        <div className="w-full h-full rounded-2xl bg-dark-800 items-center justify-center hidden">
                           <span className="text-2xl sm:text-3xl font-display font-bold text-gradient">
                             DY
                           </span>

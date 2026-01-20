@@ -129,8 +129,29 @@ const Hero = () => {
         initial="hidden"
         animate="visible"
       >
+        {/* Profile Image */}
+        <motion.div variants={itemVariants} className="mb-4 sm:mb-6">
+          <div className="relative inline-block">
+            <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-neon-cyan via-neon-purple to-neon-pink p-1 animate-glow">
+              <img
+                src="/Portfolio_Denuwan/profile.jpg"
+                alt="Denuwan Yasanga"
+                className="w-full h-full rounded-full object-cover"
+                onError={(e) => {
+                  e.target.style.display = 'none'
+                  e.target.nextSibling.style.display = 'flex'
+                }}
+              />
+              <div className="w-full h-full rounded-full bg-dark-800 items-center justify-center hidden">
+                <span className="text-3xl sm:text-4xl font-display font-bold text-gradient">DY</span>
+              </div>
+            </div>
+            <div className="absolute -bottom-1 -right-1 w-6 h-6 sm:w-7 sm:h-7 bg-neon-green rounded-full border-4 border-dark-900 animate-pulse" />
+          </div>
+        </motion.div>
+
         {/* Greeting */}
-        <motion.div variants={itemVariants} className="mb-6 sm:mb-8">
+        <motion.div variants={itemVariants} className="mb-4 sm:mb-6">
           <span className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-dark-700/50 border border-white/10 backdrop-blur-sm">
             <span className="w-2 h-2 rounded-full bg-neon-green animate-pulse mr-2" />
             <span className="text-xs sm:text-sm text-gray-300 font-mono">
