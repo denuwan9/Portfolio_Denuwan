@@ -103,7 +103,16 @@ const TimelineItem = ({ item, index, isLeft }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
-      {/* Timeline dot */}
+      {/* Timeline dot - mobile version */}
+      <div className="absolute left-4 top-6 z-10 md:hidden">
+        <motion.div
+          className={`w-3 h-3 rounded-full ${
+            item.type === 'work' ? 'bg-neon-cyan' : 'bg-neon-purple'
+          }`}
+        />
+      </div>
+
+      {/* Timeline dot - desktop */}
       <div className="absolute left-1/2 -translate-x-1/2 z-10 hidden md:block">
         <motion.div
           className={`w-4 h-4 rounded-full border-4 border-dark-900 ${
@@ -115,9 +124,9 @@ const TimelineItem = ({ item, index, isLeft }) => {
       </div>
 
       {/* Content */}
-      <div className={`w-full md:w-1/2 ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}>
+      <div className={`w-full pl-10 md:pl-0 md:w-1/2 ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}>
         <motion.div
-          className="glass-card p-6 relative overflow-hidden group cursor-pointer"
+          className="glass-card p-4 sm:p-6 relative overflow-hidden group cursor-pointer"
           onClick={() => setIsExpanded(!isExpanded)}
           whileHover={{ y: -5 }}
           transition={{ type: 'spring', stiffness: 400 }}
@@ -134,30 +143,30 @@ const TimelineItem = ({ item, index, isLeft }) => {
           </div>
 
           {/* Header */}
-          <div className="flex items-start gap-4 mb-4">
+          <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
             <div
-              className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
+              className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
                 item.type === 'work'
                   ? 'bg-neon-cyan/10 text-neon-cyan'
                   : 'bg-neon-purple/10 text-neon-purple'
               }`}
             >
               {item.type === 'work' ? (
-                <FiBriefcase className="w-5 h-5" />
+                <FiBriefcase className="w-4 h-4 sm:w-5 sm:h-5" />
               ) : (
-                <FiBook className="w-5 h-5" />
+                <FiBook className="w-4 h-4 sm:w-5 sm:h-5" />
               )}
             </div>
-            <div className="flex-1">
-              <h3 className="text-lg font-display font-bold text-white">
+            <div className="flex-1 min-w-0">
+              <h3 className="text-base sm:text-lg font-display font-bold text-white truncate">
                 {item.title}
               </h3>
-              <p className="text-neon-cyan text-sm">{item.company}</p>
+              <p className="text-neon-cyan text-xs sm:text-sm truncate">{item.company}</p>
             </div>
           </div>
 
           {/* Meta */}
-          <div className="flex flex-wrap gap-4 text-xs text-gray-400 mb-4">
+          <div className="flex flex-wrap gap-2 sm:gap-4 text-2xs sm:text-xs text-gray-400 mb-3 sm:mb-4">
             <span className="flex items-center gap-1">
               <FiCalendar className="w-3 h-3" />
               {item.period}
@@ -169,7 +178,7 @@ const TimelineItem = ({ item, index, isLeft }) => {
           </div>
 
           {/* Description */}
-          <p className="text-gray-400 text-sm mb-4">{item.description}</p>
+          <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4">{item.description}</p>
 
           {/* Expandable highlights */}
           <AnimatePresence>
@@ -240,46 +249,46 @@ const Experience = () => {
   const items = activeTab === 'work' ? experiences : education
 
   return (
-    <section id="experience" className="relative py-32 overflow-hidden">
+    <section id="experience" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-dark-800/50" />
       <div className="absolute inset-0 bg-grid opacity-20" />
 
-      {/* Decorative elements */}
-      <div className="absolute top-1/3 -left-20 w-40 h-40 bg-neon-cyan/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/3 -right-20 w-40 h-40 bg-neon-purple/5 rounded-full blur-3xl" />
+      {/* Decorative elements - hidden on mobile */}
+      <div className="hidden md:block absolute top-1/3 -left-20 w-40 h-40 bg-neon-cyan/5 rounded-full blur-3xl" />
+      <div className="hidden md:block absolute bottom-1/3 -right-20 w-40 h-40 bg-neon-purple/5 rounded-full blur-3xl" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div ref={ref}>
           {/* Section header */}
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 md:mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-neon-cyan font-mono text-sm uppercase tracking-wider">
+            <span className="text-neon-cyan font-mono text-xs sm:text-sm uppercase tracking-wider">
               My Journey
             </span>
-            <h2 className="section-title text-gradient mt-4">
+            <h2 className="section-title text-gradient mt-2 sm:mt-4 text-2xl sm:text-3xl md:text-4xl">
               Experience & Education
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto mt-4">
+            <p className="text-gray-400 max-w-2xl mx-auto mt-2 sm:mt-4 text-sm sm:text-base px-4">
               A timeline of my professional journey and educational background.
             </p>
-            <div className="w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto mt-6 rounded-full" />
+            <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto mt-4 sm:mt-6 rounded-full" />
           </motion.div>
 
           {/* Tab switcher */}
           <motion.div
-            className="flex justify-center gap-4 mb-12"
+            className="flex justify-center gap-2 sm:gap-4 mb-8 sm:mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
           >
             <motion.button
               onClick={() => setActiveTab('work')}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-all duration-300 ${
                 activeTab === 'work'
                   ? 'bg-neon-cyan text-dark-900 shadow-neon-cyan'
                   : 'glass-card text-gray-400 hover:text-white'
@@ -287,12 +296,12 @@ const Experience = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <FiBriefcase className="w-4 h-4" />
-              Work Experience
+              <FiBriefcase className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span className="hidden xs:inline">Work</span> Experience
             </motion.button>
             <motion.button
               onClick={() => setActiveTab('education')}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-all duration-300 ${
                 activeTab === 'education'
                   ? 'bg-neon-purple text-dark-900 shadow-neon-purple'
                   : 'glass-card text-gray-400 hover:text-white'
@@ -300,14 +309,16 @@ const Experience = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <FiBook className="w-4 h-4" />
+              <FiBook className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               Education
             </motion.button>
           </motion.div>
 
           {/* Timeline */}
           <div className="relative">
-            {/* Vertical line */}
+            {/* Vertical line - mobile */}
+            <div className="absolute left-[21px] top-0 bottom-0 w-px bg-gradient-to-b from-neon-cyan via-neon-purple to-transparent md:hidden" />
+            {/* Vertical line - desktop */}
             <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-neon-cyan via-neon-purple to-transparent hidden md:block" />
 
             {/* Timeline items */}
@@ -327,7 +338,7 @@ const Experience = () => {
 
           {/* Download CV button */}
           <motion.div
-            className="text-center mt-16"
+            className="text-center mt-10 sm:mt-16"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.6 }}
@@ -335,7 +346,7 @@ const Experience = () => {
             <motion.a
               href="/resume.pdf"
               download
-              className="btn-outline inline-flex items-center gap-2"
+              className="btn-outline inline-flex items-center gap-2 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

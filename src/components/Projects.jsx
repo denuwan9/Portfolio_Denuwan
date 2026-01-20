@@ -193,20 +193,20 @@ const ProjectCard = ({ project, index }) => {
         </div>
 
         {/* Content */}
-        <div className="p-6">
-          <h3 className="text-xl font-display font-bold text-white mb-2 group-hover:text-gradient transition-all">
+        <div className="p-4 sm:p-6">
+          <h3 className="text-lg sm:text-xl font-display font-bold text-white mb-2 group-hover:text-gradient transition-all">
             {project.title}
           </h3>
-          <p className="text-gray-400 text-sm mb-4 line-clamp-3">
+          <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-3">
             {project.description}
           </p>
 
           {/* Tags */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 text-xs font-mono rounded-full bg-dark-600/50 text-gray-400 border border-white/5"
+                className="px-2 sm:px-3 py-0.5 sm:py-1 text-2xs sm:text-xs font-mono rounded-full bg-dark-600/50 text-gray-400 border border-white/5"
               >
                 {tag}
               </span>
@@ -244,40 +244,40 @@ const Projects = () => {
   const displayedProjects = showAll ? projects : projects.slice(0, 3)
 
   return (
-    <section id="projects" className="relative py-32 overflow-hidden">
+    <section id="projects" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-dark-900" />
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neon-purple/50 to-transparent" />
 
-      {/* Decorative orbs */}
-      <div className="absolute top-1/4 -right-40 w-80 h-80 bg-neon-cyan/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 -left-40 w-80 h-80 bg-neon-purple/5 rounded-full blur-3xl" />
+      {/* Decorative orbs - hidden on mobile */}
+      <div className="hidden md:block absolute top-1/4 -right-40 w-80 h-80 bg-neon-cyan/5 rounded-full blur-3xl" />
+      <div className="hidden md:block absolute bottom-1/4 -left-40 w-80 h-80 bg-neon-purple/5 rounded-full blur-3xl" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div ref={ref}>
           {/* Section header */}
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 md:mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-neon-cyan font-mono text-sm uppercase tracking-wider">
+            <span className="text-neon-cyan font-mono text-xs sm:text-sm uppercase tracking-wider">
               My Work
             </span>
-            <h2 className="section-title text-gradient mt-4">
+            <h2 className="section-title text-gradient mt-2 sm:mt-4 text-2xl sm:text-3xl md:text-4xl">
               Featured Projects
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto mt-4">
+            <p className="text-gray-400 max-w-2xl mx-auto mt-2 sm:mt-4 text-sm sm:text-base px-4">
               A selection of projects that showcase my skills and passion for
               building innovative solutions.
             </p>
-            <div className="w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto mt-6 rounded-full" />
+            <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto mt-4 sm:mt-6 rounded-full" />
           </motion.div>
 
           {/* Projects grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {displayedProjects.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}
@@ -286,14 +286,14 @@ const Projects = () => {
           {/* Show more button */}
           {projects.length > 3 && (
             <motion.div
-              className="text-center mt-12"
+              className="text-center mt-8 sm:mt-12"
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ delay: 0.5 }}
             >
               <motion.button
                 onClick={() => setShowAll(!showAll)}
-                className="btn-outline inline-flex items-center gap-2"
+                className="btn-outline inline-flex items-center gap-2 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -310,16 +310,16 @@ const Projects = () => {
 
           {/* GitHub CTA */}
           <motion.div
-            className="mt-16 text-center glass-card p-8 max-w-2xl mx-auto"
+            className="mt-10 sm:mt-16 text-center glass-card p-6 sm:p-8 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.6 }}
           >
-            <FiGithub className="w-10 h-10 text-neon-cyan mx-auto mb-4" />
-            <h3 className="text-xl font-display font-bold text-white mb-2">
+            <FiGithub className="w-8 h-8 sm:w-10 sm:h-10 text-neon-cyan mx-auto mb-3 sm:mb-4" />
+            <h3 className="text-lg sm:text-xl font-display font-bold text-white mb-2">
               Want to see more?
             </h3>
-            <p className="text-gray-400 mb-6">
+            <p className="text-gray-400 mb-4 sm:mb-6 text-sm sm:text-base">
               Check out my GitHub for more projects, open-source contributions,
               and code experiments.
             </p>
@@ -327,11 +327,11 @@ const Projects = () => {
               href="https://github.com/denuwanyasanga"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-glow inline-flex items-center gap-2 text-dark-900"
+              className="btn-glow inline-flex items-center gap-2 text-dark-900 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <FiGithub className="w-5 h-5" />
+              <FiGithub className="w-4 h-4 sm:w-5 sm:h-5" />
               <span className="relative z-10">View GitHub Profile</span>
             </motion.a>
           </motion.div>

@@ -79,8 +79,8 @@ const Contact = () => {
   }
 
   const inputClasses = `
-    w-full px-4 py-3 rounded-xl bg-dark-700/50 border border-white/10
-    text-white placeholder-gray-500 outline-none transition-all duration-300
+    w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-dark-700/50 border border-white/10
+    text-sm sm:text-base text-white placeholder-gray-500 outline-none transition-all duration-300
     focus:border-neon-cyan/50 focus:shadow-[0_0_20px_rgba(0,245,255,0.1)]
     hover:border-white/20
   `
@@ -88,74 +88,74 @@ const Contact = () => {
   const errorClasses = 'border-red-500/50 focus:border-red-500/50'
 
   return (
-    <section id="contact" className="relative py-32 overflow-hidden">
+    <section id="contact" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-dark-900" />
       <div className="absolute inset-0 bg-grid opacity-20" />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neon-cyan/50 to-transparent" />
 
-      {/* Decorative orbs */}
-      <div className="absolute top-1/4 -left-40 w-80 h-80 bg-neon-cyan/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 -right-40 w-80 h-80 bg-neon-purple/5 rounded-full blur-3xl" />
+      {/* Decorative orbs - hidden on mobile */}
+      <div className="hidden md:block absolute top-1/4 -left-40 w-80 h-80 bg-neon-cyan/5 rounded-full blur-3xl" />
+      <div className="hidden md:block absolute bottom-1/4 -right-40 w-80 h-80 bg-neon-purple/5 rounded-full blur-3xl" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div ref={ref}>
           {/* Section header */}
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 md:mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-neon-cyan font-mono text-sm uppercase tracking-wider">
+            <span className="text-neon-cyan font-mono text-xs sm:text-sm uppercase tracking-wider">
               Get In Touch
             </span>
-            <h2 className="section-title text-gradient mt-4">
+            <h2 className="section-title text-gradient mt-2 sm:mt-4 text-2xl sm:text-3xl md:text-4xl">
               Let's Work Together
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto mt-4">
+            <p className="text-gray-400 max-w-2xl mx-auto mt-2 sm:mt-4 text-sm sm:text-base px-4">
               Have a project in mind or just want to chat? Feel free to reach out.
               I'm always open to discussing new opportunities.
             </p>
-            <div className="w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto mt-6 rounded-full" />
+            <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto mt-4 sm:mt-6 rounded-full" />
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
             {/* Contact info */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-8"
+              className="space-y-4 sm:space-y-8"
             >
-              <div className="glass-card p-8">
-                <h3 className="text-2xl font-display font-bold text-white mb-6">
+              <div className="glass-card p-5 sm:p-8">
+                <h3 className="text-xl sm:text-2xl font-display font-bold text-white mb-4 sm:mb-6">
                   Contact Information
                 </h3>
 
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                   {contactInfo.map((item, index) => (
                     <motion.div
                       key={item.label}
-                      className="flex items-center gap-4 group"
+                      className="flex items-center gap-3 sm:gap-4 group"
                       initial={{ opacity: 0, x: -20 }}
                       animate={inView ? { opacity: 1, x: 0 } : {}}
                       transition={{ delay: 0.3 + index * 0.1 }}
                     >
-                      <div className="w-12 h-12 rounded-xl bg-neon-cyan/10 flex items-center justify-center group-hover:bg-neon-cyan/20 transition-colors">
-                        <item.icon className="w-5 h-5 text-neon-cyan" />
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-neon-cyan/10 flex items-center justify-center group-hover:bg-neon-cyan/20 transition-colors flex-shrink-0">
+                        <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-neon-cyan" />
                       </div>
-                      <div>
-                        <p className="text-sm text-gray-400">{item.label}</p>
+                      <div className="min-w-0">
+                        <p className="text-xs sm:text-sm text-gray-400">{item.label}</p>
                         {item.href ? (
                           <a
                             href={item.href}
-                            className="text-white hover:text-neon-cyan transition-colors"
+                            className="text-sm sm:text-base text-white hover:text-neon-cyan transition-colors truncate block"
                           >
                             {item.value}
                           </a>
                         ) : (
-                          <p className="text-white">{item.value}</p>
+                          <p className="text-sm sm:text-base text-white truncate">{item.value}</p>
                         )}
                       </div>
                     </motion.div>
@@ -163,9 +163,9 @@ const Contact = () => {
                 </div>
 
                 {/* Social links */}
-                <div className="mt-8 pt-8 border-t border-white/10">
-                  <p className="text-sm text-gray-400 mb-4">Follow me</p>
-                  <div className="flex gap-4">
+                <div className="mt-6 pt-6 sm:mt-8 sm:pt-8 border-t border-white/10">
+                  <p className="text-xs sm:text-sm text-gray-400 mb-3 sm:mb-4">Follow me</p>
+                  <div className="flex gap-3 sm:gap-4">
                     {socialLinks.map((link, index) => (
                       <motion.a
                         key={link.label}
@@ -186,22 +186,22 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Decorative card */}
+              {/* Decorative card - hidden on very small screens */}
               <motion.div
-                className="glass-card p-6 text-center"
+                className="hidden xs:block glass-card p-4 sm:p-6 text-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.6 }}
               >
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-neon-cyan to-neon-purple p-0.5">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-full bg-gradient-to-br from-neon-cyan to-neon-purple p-0.5">
                   <div className="w-full h-full rounded-full bg-dark-800 flex items-center justify-center">
-                    <span className="text-2xl">💬</span>
+                    <span className="text-xl sm:text-2xl">💬</span>
                   </div>
                 </div>
-                <h4 className="text-lg font-semibold text-white mb-2">
+                <h4 className="text-base sm:text-lg font-semibold text-white mb-2">
                   Let's Chat!
                 </h4>
-                <p className="text-sm text-gray-400">
+                <p className="text-xs sm:text-sm text-gray-400">
                   I typically respond within 24 hours. Looking forward to hearing
                   from you!
                 </p>
@@ -214,12 +214,12 @@ const Contact = () => {
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <div className="glass-card p-8">
-                <h3 className="text-2xl font-display font-bold text-white mb-6">
+              <div className="glass-card p-5 sm:p-8">
+                <h3 className="text-xl sm:text-2xl font-display font-bold text-white mb-4 sm:mb-6">
                   Send a Message
                 </h3>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
                   {/* Name input */}
                   <div>
                     <label
