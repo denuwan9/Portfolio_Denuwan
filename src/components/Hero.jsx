@@ -216,7 +216,7 @@ const Hero = () => {
         {/* Social Links */}
         <motion.div
           variants={itemVariants}
-          className="flex items-center justify-center gap-4 sm:gap-6 mb-16 sm:mb-20"
+          className="flex items-center justify-center gap-4 sm:gap-6"
         >
           {[
             { href: 'https://github.com/denuwanyasanga', icon: FiGithub, label: 'GitHub' },
@@ -241,7 +241,7 @@ const Hero = () => {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 z-20"
+        className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 1.5 }}
@@ -249,8 +249,8 @@ const Hero = () => {
       >
         <motion.button
           onClick={scrollToAbout}
-          className="flex flex-col items-center gap-2 text-gray-400 hover:text-neon-cyan transition-colors touch-manipulation"
-          animate={{ y: [0, 8, 0] }}
+          className="flex flex-col items-center gap-1 text-gray-400 hover:text-neon-cyan transition-colors touch-manipulation"
+          animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           aria-label="Scroll to about section"
         >
