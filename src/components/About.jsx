@@ -91,7 +91,7 @@ const About = () => {
                     <div className="relative flex-shrink-0">
                       <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-neon-cyan to-neon-purple p-0.5">
                         <img
-                          src="/Portfolio_Denuwan/profile.png"
+                          src={`${import.meta.env.BASE_URL}profile-img/profile.png`}
                           alt="Denuwan Yasanga"
                           className="w-full h-full rounded-2xl object-cover"
                           onError={(e) => {

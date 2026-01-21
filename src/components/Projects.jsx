@@ -56,7 +56,7 @@ const projects = [
     title: 'BUDGETLYST (Finance Tracker App)',
     description:
       'Built Budgetlyst, a native Kotlin Android app for personal finance tracking with secure login, dashboards, and budget management.',
-    image: `${BASE_URL}projects/Finance-Budget-app.jpg`,
+    image: `${BASE_URL}projects/Finance-Budget-app.jpeg`,
     tags: ['Kotlin', 'MobileApp', 'Android Studio', 'UI/UX Design', 'SharedPreferences'],
     github: 'https://github.com/denuwan9/financetracker.git',
     featured: false,
@@ -67,7 +67,7 @@ const projects = [
     title: 'OXY FITNESS: AI-Powered Trainer App UI',
     description:
       'Designed the UI for an AI-powered fitness trainer app with personalized workouts, real-time guidance, and integrated stopwatch.',
-    image: `${BASE_URL}projects/weather.jpg`,
+    image: `${BASE_URL}projects/oxy-fitness-ui-app.jpeg`,
     tags: ['Figma', 'MobileAppDesign', 'Prototyping', 'UI/UX Design', 'FitnessApp'],
     live: 'https://www.figma.com/proto/9HICl0stq8Hb8kw07Hiee6/OXY-fitness-app?node-id=3-45&t=iEn7liSfa8YkNw4g-1&starting-point-node-id=1%3A2',
     featured: false,

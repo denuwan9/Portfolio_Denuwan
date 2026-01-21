@@ -250,7 +250,7 @@ const Hero = () => {
             <div className="relative">
               <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-neon-cyan via-neon-purple to-neon-pink p-1.5 animate-glow">
                 <img
-                  src="/Portfolio_Denuwan/profile-img/profile.png"
+                  src={`${import.meta.env.BASE_URL}profile-img/profile.png`}
                   alt="Denuwan Yasanga"
                   className="w-full h-full rounded-full object-cover bg-dark-800"
                   onError={(e) => {

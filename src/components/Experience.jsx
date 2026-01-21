@@ -345,7 +345,7 @@ const Experience = () => {
             transition={{ delay: 0.6 }}
           >
             <motion.a
-              href="/Portfolio_Denuwan/resume.pdf"
+              href={`${import.meta.env.BASE_URL}resume.pdf`}
               download="resume.pdf"
               className="btn-outline inline-flex items-center gap-2 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
               whileHover={{ scale: 1.05 }}
