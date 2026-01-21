@@ -13,46 +13,47 @@ const experiences = [
   {
     id: 1,
     type: 'work',
-    title: 'Software Engineer',
-    company: 'Tech Solutions Ltd',
-    location: 'Colombo, Sri Lanka',
-    period: '2023 - Present',
+    title: 'Developer (Co -Founder)',
+    company: 'Pshyco Lab IT Solutions',
+    location: 'Remote',
+    period: '2026 - Present',
     description:
-      'Leading development of enterprise web applications using React, Node.js, and cloud technologies. Implementing CI/CD pipelines and mentoring junior developers.',
+      'Worked as a full-stack developer building IT solutions including web applications, mobile applications, and portfolio websites. Involved in designing, developing, and deploying end-to-end systems with a strong focus on performance, scalability, and modern UI/UX.',
     highlights: [
-      'Built scalable microservices architecture',
-      'Reduced deployment time by 60%',
-      'Led team of 4 developers',
+       'Developed full-stack web applications and mobile app solutions using modern frameworks and tools',
+       'Built reusable components, backend services, and integrated third-party APIs and email systems',
+       'Delivered production-ready systems with optimized performance, responsive design, and SEO best practices',
     ],
   },
   {
     id: 2,
     type: 'work',
     title: 'Full Stack Developer',
-    company: 'Digital Innovations',
+    company: 'Master Neon (Client Project)',
     location: 'Remote',
-    period: '2022 - 2023',
+    period: '2026',
     description:
-      'Developed and maintained multiple client projects including e-commerce platforms, CRM systems, and mobile applications.',
+      'Developed a modern full-stack web application that enables customers to design custom neon signs in real time, including name signs, logo signs, and ready-made templates. The platform focuses on high performance, usability, and a visually engaging UI/UX.',
     highlights: [
-      'Delivered 15+ projects on time',
-      'Implemented real-time features',
-      'Improved app performance by 40%',
+      'Built real-time neon customization using React, TypeScript, and HTML5 Canvas',
+      'Implemented PDF generation and email-based design submission without user authentication',
+      'Delivered a scalable, SEO-optimized production system with modern UI/UX',
     ],
   },
   {
     id: 3,
-    type: 'work',
-    title: 'Junior Developer',
-    company: 'StartUp Hub',
-    location: 'Colombo, Sri Lanka',
-    period: '2021 - 2022',
-    description:
-      'Started career working on diverse projects, learning industry best practices, and contributing to product development.',
-    highlights: [
-      'Learned agile methodologies',
-      'Built first production app',
-      'Collaborated with design team',
+  type: 'work',
+  title: 'Web Developer',
+  company: 'Oxy Fitness Gym (Client base - Coruse assignment)',
+  location: 'SLIIT, Malabe, Sri Lanka',
+  period: 'May 2025 - Jul 2025',
+  description: 'Developed a MERN stack web application to streamline gym operations, focusing on secure and efficient user management.',
+  highlights: [
+    'Implemented centralized role-based access control for 5 user roles (Admin, Coach, Staff, Member, Supplier)',
+    'Built secure authentication system with registration, login, and password management',
+    'Developed administrative control features for managing user accounts and profiles',
+    'Worked in a team environment, coordinating with colleagues across all modules',
+    'Applied MERN stack technologies: MongoDB, Express.js, React.js, Node.js',
     ],
   },
 ]
@@ -61,31 +62,31 @@ const education = [
   {
     id: 1,
     type: 'education',
-    title: 'BSc in Computer Science',
-    company: 'University of Colombo',
-    location: 'Colombo, Sri Lanka',
-    period: '2018 - 2022',
-    description:
-      'Focused on software engineering, algorithms, and artificial intelligence. Graduated with honors.',
+    title: 'BSc (Hons) in Information Technology',
+    company: 'SLIIT - Sri Lanka Institute of Information Technology',
+    location: 'Malabe, Sri Lanka',
+    period: '2023 - present',
+    description: 'Currently pursuing a BSc (Hons) with a specialization in Information Technology at SLIIT, focusing on software engineering, algorithms, and artificial intelligence, with an emphasis on practical applications and innovative problem-solving.',
     highlights: [
-      'Dean\'s List - 3 semesters',
-      'Best Final Year Project Award',
-      'Led University Coding Club',
+      "Served as Group Leader for multiple university projects, coordinating team efforts and delivering results",
+      "Gained hands-on experience in algorithms, data analysis, and risk analysis",
+      "Developed skills in mobile app and web application development using Python, C, C++, Java, JavaScript, SQL, Node.js, MERN stack, PHP, HTML, CSS, and Tailwind CSS",
+      "Applied Object-Oriented Programming (OOP) principles in real-world projects",
     ],
   },
   {
     id: 2,
     type: 'education',
-    title: 'Professional Certifications',
-    company: 'Various Platforms',
-    location: 'Online',
-    period: '2020 - Present',
+    title: 'G.C.E. Advanced Level Examination  ',
+    company: 'SRI Subhuthi National School, Battaramulla',
+    location: 'Battaramulla, Sri Lanka',
+    period: '2022 - (2023)',
     description:
-      'Continuous learning through professional certifications and courses.',
+      'Completed the G.C.E. Advanced Level at SRI Subhuthi National School, Battaramulla, in the Technology Stream, achieving strong academic results and serving as a member of the Prefect Board, demonstrating leadership and responsibility.',
     highlights: [
-      'AWS Certified Developer',
-      'Google Cloud Professional',
-      'Meta React Developer',
+      'SCIENCE For Technology ( B )',
+      'Information and Communication Technology ( C )',
+      'Engineering Technology ( C )',
     ],
   },
 ]
@@ -344,8 +345,8 @@ const Experience = () => {
             transition={{ delay: 0.6 }}
           >
             <motion.a
-              href="/resume.pdf"
-              download
+              href="/Portfolio_Denuwan/resume.pdf"
+              download="resume.pdf"
               className="btn-outline inline-flex items-center gap-2 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

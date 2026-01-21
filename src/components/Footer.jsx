@@ -7,12 +7,12 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: FiGithub,
-      href: 'https://github.com/denuwanyasanga',
+      href: 'https://github.com/denuwan9',
       label: 'GitHub',
     },
     {
       icon: FiLinkedin,
-      href: 'https://linkedin.com/in/denuwanyasanga',
+      href: 'https://www.linkedin.com/in/denuwan-yasanga-9a4442309/',
       label: 'LinkedIn',
     },
     {
@@ -116,16 +116,7 @@ const Footer = () => {
           <p className="text-xs sm:text-sm text-gray-500 text-center sm:text-left">
             © {currentYear} Denuwan Yasanga. All rights reserved.
           </p>
-          <p className="text-xs sm:text-sm text-gray-500 flex items-center gap-1">
-            Built with
-            <motion.span
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1, repeat: Infinity }}
-            >
-              <FiHeart className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-500 fill-current" />
-            </motion.span>
-            using React & Tailwind
-          </p>
+          
         </div>
       </div>
     </footer>

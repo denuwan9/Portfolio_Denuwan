@@ -3,76 +3,73 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { FiGithub, FiExternalLink, FiFolder, FiStar } from 'react-icons/fi'
 
+const BASE_URL = import.meta.env.BASE_URL
+
 const projects = [
   {
     id: 1,
-    title: 'Master Neon',
+    title: 'Master Neon Web App',
     description:
       'A custom neon sign builder application allowing users to design and visualize personalized LED neon signs with real-time preview and pricing.',
-    image: '/projects/master-neon.jpg',
-    tags: ['React', 'Node.js', 'Canvas API', 'MongoDB'],
-    github: 'https://github.com/denuwanyasanga/master-neon',
-    live: 'https://master-neon.com',
+    image: `${BASE_URL}projects/master-neon.png`,
+    tags: ['React', 'Node.js', 'MongoDB', 'TypeScript', 'Tailwind CSS', 'GitHub', 'Deployment'],
+    live: 'https://masterneon.lk',
     featured: true,
     color: '#00f5ff',
   },
   {
     id: 2,
-    title: 'AI Fitness Trainer',
+    title: 'Student Management System',
     description:
-      'An AI-powered fitness application that creates personalized workout plans, tracks progress, and provides real-time form correction using computer vision.',
-    image: '/projects/fitness-ai.jpg',
-    tags: ['React Native', 'TensorFlow', 'Python', 'Firebase'],
-    github: 'https://github.com/denuwanyasanga/ai-fitness',
-    live: 'https://ai-fitness-app.com',
+      '"Built a Student Management System for managing student records and workflows, focusing on clean code, scalability, and backend development with OOP and Git.',
+    image: `${BASE_URL}projects/student-management-system.jpeg`,
+    tags: ['C#', 'SQL', 'OOP', 'CUD Operations', 'Validation', 'Git'],
+    github: 'https://github.com/denuwan9/StudentManagmentSystem.git',
     featured: true,
     color: '#bf00ff',
   },
   {
     id: 3,
-    title: 'Student Management System',
+    title: 'Oxy Fitness Gym Management System',
     description:
-      'A comprehensive student management platform with features for enrollment, grade tracking, attendance, and automated reporting for educational institutions.',
-    image: '/projects/student-system.jpg',
-    tags: ['Next.js', 'PostgreSQL', 'Prisma', 'TypeScript'],
-    github: 'https://github.com/denuwanyasanga/student-management',
+      'Built the User Management module for a MERN-based Gym Management Web App, implementing secure authentication and role-based access control for multiple user roles.',
+    image: `${BASE_URL}projects/oxy-fitness-gym-system.png`,
+    tags: ['MERN Stack', 'User Authentication (JWT)', '(RBAC)', 'React', 'Node.js'],
+    github: 'https://github.com/denuwan9/OXY_Fitness_System.git',
     live: 'https://student-ms.com',
     featured: true,
     color: '#ff00f5',
   },
   {
     id: 4,
-    title: 'E-Commerce Platform',
+    title: 'Open Library Website (Redesign UI)',
     description:
-      'A full-featured e-commerce solution with real-time inventory, payment processing, and admin dashboard.',
-    image: '/projects/ecommerce.jpg',
-    tags: ['React', 'Stripe', 'Node.js', 'MongoDB'],
-    github: 'https://github.com/denuwanyasanga/ecommerce',
-    live: null,
+      'Redesigned the Open Library UI for improved usability, creating interactive Figma prototypes based on user research and testing.',
+    image: `${BASE_URL}projects/open-library-redesign.jpeg`,
+    tags: ['UI/UX Design', 'Figma', 'Prototyping', 'HumanCenteredDesign', 'UsabilityTesting'],
+    live: 'https://www.figma.com/proto/OW1sYKB6fny70I06384GjG/HCI-Open-Library-project?node-id=90-2275&p=f&t=B6I5MBzawVGGuOs9-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=27%3A455&show-proto-sidebar=1',
     featured: false,
     color: '#00ff80',
   },
   {
     id: 5,
-    title: 'Task Management App',
+    title: 'BUDGETLYST (Finance Tracker App)',
     description:
-      'A collaborative task management application with real-time updates, team features, and productivity analytics.',
-    image: '/projects/taskapp.jpg',
-    tags: ['Vue.js', 'Firebase', 'Tailwind'],
-    github: 'https://github.com/denuwanyasanga/taskapp',
-    live: 'https://taskapp-demo.com',
+      'Built Budgetlyst, a native Kotlin Android app for personal finance tracking with secure login, dashboards, and budget management.',
+    image: `${BASE_URL}projects/Finance-Budget-app.jpg`,
+    tags: ['Kotlin', 'MobileApp', 'Android Studio', 'UI/UX Design', 'SharedPreferences'],
+    github: 'https://github.com/denuwan9/financetracker.git',
     featured: false,
     color: '#0080ff',
   },
   {
     id: 6,
-    title: 'Weather Dashboard',
+    title: 'OXY FITNESS: AI-Powered Trainer App UI',
     description:
-      'A beautiful weather application with location-based forecasts, interactive maps, and severe weather alerts.',
-    image: '/projects/weather.jpg',
-    tags: ['React', 'Weather API', 'Charts.js'],
-    github: 'https://github.com/denuwanyasanga/weather',
-    live: null,
+      'Designed the UI for an AI-powered fitness trainer app with personalized workouts, real-time guidance, and integrated stopwatch.',
+    image: `${BASE_URL}projects/weather.jpg`,
+    tags: ['Figma', 'MobileAppDesign', 'Prototyping', 'UI/UX Design', 'FitnessApp'],
+    live: 'https://www.figma.com/proto/9HICl0stq8Hb8kw07Hiee6/OXY-fitness-app?node-id=3-45&t=iEn7liSfa8YkNw4g-1&starting-point-node-id=1%3A2',
     featured: false,
     color: '#00f5ff',
   },
@@ -137,19 +134,28 @@ const ProjectCard = ({ project, index }) => {
             background: `linear-gradient(135deg, ${project.color}20 0%, transparent 100%)`,
           }}
         >
-          {/* Placeholder pattern */}
+          {/* Fallback pattern */}
           <div className="absolute inset-0 bg-grid opacity-30" />
+          {/* Project image */}
+          <img
+            src={project.image}
+            alt={project.title}
+            className="absolute inset-0 w-full h-full object-cover z-10"
+            onError={(e) => {
+              e.target.style.display = 'none'
+            }}
+          />
 
           {/* Featured badge */}
           {project.featured && (
-            <div className="absolute top-4 right-4 flex items-center gap-1 px-3 py-1 rounded-full bg-dark-900/80 backdrop-blur-sm border border-neon-cyan/30">
+            <div className="absolute top-4 right-4 flex items-center gap-1 px-3 py-1 rounded-full bg-dark-900/80 backdrop-blur-sm border border-neon-cyan/30 z-10">
               <FiStar className="w-3 h-3 text-neon-cyan" />
               <span className="text-xs font-mono text-neon-cyan">Featured</span>
             </div>
           )}
 
           {/* Folder icon */}
-          <div className="absolute bottom-4 left-4">
+          <div className="absolute bottom-4 left-4 z-10">
             <div
               className="w-12 h-12 rounded-xl flex items-center justify-center"
               style={{ backgroundColor: `${project.color}20` }}
@@ -160,7 +166,7 @@ const ProjectCard = ({ project, index }) => {
 
           {/* Hover overlay */}
           <motion.div
-            className="absolute inset-0 flex items-center justify-center gap-4 bg-dark-900/80 backdrop-blur-sm"
+            className="absolute inset-0 flex items-center justify-center gap-4 bg-dark-900/80 backdrop-blur-sm z-20"
             initial={{ opacity: 0 }}
             animate={{ opacity: isHovered ? 1 : 0 }}
             transition={{ duration: 0.2 }}
@@ -324,7 +330,7 @@ const Projects = () => {
               and code experiments.
             </p>
             <motion.a
-              href="https://github.com/denuwanyasanga"
+              href="https://github.com/denuwan9"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-glow inline-flex items-center gap-2 text-dark-900 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"

@@ -17,8 +17,8 @@ const contactInfo = [
   {
     icon: FiMail,
     label: 'Email',
-    value: 'hello@denuwan.dev',
-    href: 'mailto:hello@denuwan.dev',
+    value: 'denuwanyasanga9@gmail.com',
+    href: 'mailto:denuwanyasanga9@gmail.com',
   },
   {
     icon: FiMapPin,
@@ -32,12 +32,12 @@ const socialLinks = [
   {
     icon: FiGithub,
     label: 'GitHub',
-    href: 'https://github.com/denuwanyasanga',
+    href: 'https://github.com/denuwan9',
   },
   {
     icon: FiLinkedin,
     label: 'LinkedIn',
-    href: 'https://linkedin.com/in/denuwanyasanga',
+    href: 'https://www.linkedin.com/in/denuwan-yasanga-9a4442309/',
   },
   {
     icon: FiTwitter,
@@ -61,18 +61,46 @@ const Contact = () => {
     formState: { errors },
   } = useForm()
 
+  const FORMSPREE_ID = 'xbddpval'
+
   const onSubmit = async (data) => {
     setIsSubmitting(true)
     setSubmitStatus(null)
 
-    // Simulate form submission
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-      console.log('Form data:', data)
-      setSubmitStatus('success')
-      reset()
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          subject: data.subject,
+          message: data.message,
+        }),
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        reset()
+        // Auto-hide success message after 5 seconds
+        setTimeout(() => {
+          setSubmitStatus(null)
+        }, 5000)
+      } else {
+        setSubmitStatus('error')
+        // Auto-hide error message after 5 seconds
+        setTimeout(() => {
+          setSubmitStatus(null)
+        }, 5000)
+      }
     } catch (error) {
       setSubmitStatus('error')
+      // Auto-hide error message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus(null)
+      }, 5000)
     } finally {
       setIsSubmitting(false)
     }

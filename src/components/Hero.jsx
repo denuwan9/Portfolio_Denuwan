@@ -123,141 +123,156 @@ const Hero = () => {
 
       {/* Main content */}
       <motion.div
-        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full pt-20 md:pt-24 pb-24 sm:pb-28"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20 md:pt-24 pb-24 sm:pb-28"
         style={{ y: isMobile ? 0 : contentY, opacity }}
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* Profile Image */}
-        <motion.div variants={itemVariants} className="mb-4 sm:mb-6">
-          <div className="relative inline-block">
-            <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-neon-cyan via-neon-purple to-neon-pink p-1 animate-glow">
-              <img
-                src="/Portfolio_Denuwan/profile.jpg"
-                alt="Denuwan Yasanga"
-                className="w-full h-full rounded-full object-cover"
-                onError={(e) => {
-                  e.target.style.display = 'none'
-                  e.target.nextSibling.style.display = 'flex'
-                }}
-              />
-              <div className="w-full h-full rounded-full bg-dark-800 items-center justify-center hidden">
-                <span className="text-3xl sm:text-4xl font-display font-bold text-gradient">DY</span>
-              </div>
-            </div>
-            <div className="absolute -bottom-1 -right-1 w-6 h-6 sm:w-7 sm:h-7 bg-neon-green rounded-full border-4 border-dark-900 animate-pulse" />
-          </div>
-        </motion.div>
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+          {/* Left side - Text content */}
+          <div className="flex-1 text-center lg:text-left order-2 lg:order-1">
+            {/* Greeting */}
+            <motion.div variants={itemVariants} className="mb-4 sm:mb-6">
+              <span className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-dark-700/50 border border-white/10 backdrop-blur-sm">
+                <span className="w-2 h-2 rounded-full bg-neon-green animate-pulse mr-2" />
+                <span className="text-xs sm:text-sm text-gray-300 font-mono">
+                  Available for opportunities
+                </span>
+              </span>
+            </motion.div>
 
-        {/* Greeting */}
-        <motion.div variants={itemVariants} className="mb-4 sm:mb-6">
-          <span className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-dark-700/50 border border-white/10 backdrop-blur-sm">
-            <span className="w-2 h-2 rounded-full bg-neon-green animate-pulse mr-2" />
-            <span className="text-xs sm:text-sm text-gray-300 font-mono">
-              Available for opportunities
-            </span>
-          </span>
-        </motion.div>
-
-        {/* Name */}
-        <motion.h1
-          variants={itemVariants}
-          className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold mb-4 sm:mb-6 leading-tight"
-        >
-          <span className="text-white">Hi, I'm </span>
-          <span className="text-gradient inline-block">Denuwan</span>
-        </motion.h1>
-
-        {/* Animated role text */}
-        <motion.div
-          variants={itemVariants}
-          className="text-lg xs:text-xl sm:text-2xl md:text-3xl text-gray-300 mb-6 sm:mb-8 h-8 sm:h-12 flex items-center justify-center"
-        >
-          <TypeAnimation
-            sequence={[
-              'Software Engineer',
-              2000,
-              'Web Developer',
-              2000,
-              'Mobile App Creator',
-              2000,
-              'AI Enthusiast',
-              2000,
-              'Problem Solver',
-              2000,
-            ]}
-            wrapper="span"
-            speed={50}
-            repeat={Infinity}
-            className="font-mono"
-          />
-        </motion.div>
-
-        {/* Tagline */}
-        <motion.p
-          variants={itemVariants}
-          className="text-base sm:text-lg md:text-xl text-gray-400 max-w-xs sm:max-w-lg md:max-w-2xl mx-auto mb-8 sm:mb-12 px-4 sm:px-0 leading-relaxed"
-        >
-          Crafting elegant solutions to complex problems. I build modern,
-          scalable applications that make a difference.
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-4 sm:px-0"
-        >
-          <motion.a
-            href="#projects"
-            className="btn-glow text-dark-900 font-semibold w-full sm:w-auto text-center"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={(e) => {
-              e.preventDefault()
-              document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
-            }}
-          >
-            <span className="relative z-10">View My Work</span>
-          </motion.a>
-          <motion.a
-            href="#contact"
-            className="btn-outline w-full sm:w-auto text-center"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={(e) => {
-              e.preventDefault()
-              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-            }}
-          >
-            Get in Touch
-          </motion.a>
-        </motion.div>
-
-        {/* Social Links */}
-        <motion.div
-          variants={itemVariants}
-          className="flex items-center justify-center gap-4 sm:gap-6"
-        >
-          {[
-            { href: 'https://github.com/denuwanyasanga', icon: FiGithub, label: 'GitHub' },
-            { href: 'https://linkedin.com/in/denuwanyasanga', icon: FiLinkedin, label: 'LinkedIn' },
-            { href: 'mailto:hello@denuwan.dev', icon: FiMail, label: 'Email' },
-          ].map((social) => (
-            <motion.a
-              key={social.label}
-              href={social.href}
-              target={social.href.startsWith('mailto') ? undefined : '_blank'}
-              rel={social.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-              className="p-3 rounded-full bg-dark-700/50 border border-white/10 text-gray-400 hover:text-neon-cyan hover:border-neon-cyan/50 transition-all duration-300"
-              whileHover={{ scale: 1.1, y: -3 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label={social.label}
+            {/* Name */}
+            <motion.h1
+              variants={itemVariants}
+              className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl font-display font-bold mb-4 sm:mb-6 leading-tight"
             >
-              <social.icon className="w-5 h-5" />
-            </motion.a>
-          ))}
-        </motion.div>
+              <span className="text-white">Hi, I'm </span>
+              <span className="text-gradient inline-block">Denuwan <span className="text-white">Yasanga </span></span>
+            </motion.h1>
+
+            {/* Animated role text */}
+            <motion.div
+              variants={itemVariants}
+              className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl text-gray-300 mb-6 sm:mb-8 h-8 sm:h-12 flex items-center justify-center lg:justify-start"
+            >
+              <TypeAnimation
+                sequence={[
+                  'Software Engineer',
+                  2000,
+                  'Web Developer',
+                  2000,
+                  'Mobile App Creator',
+                  2000,
+                  'AI Enthusiast',
+                  2000,
+                  'Problem Solver',
+                  2000,
+                ]}
+                wrapper="span"
+                speed={50}
+                repeat={Infinity}
+                className="font-mono"
+              />
+            </motion.div>
+
+            {/* Tagline */}
+            <motion.p
+              variants={itemVariants}
+              className="text-base sm:text-lg md:text-xl text-gray-400 max-w-xs sm:max-w-lg md:max-w-2xl mx-auto lg:mx-0 mb-8 sm:mb-12 px-4 sm:px-0 leading-relaxed"
+            >
+              Crafting elegant solutions to complex problems. I build modern,
+              scalable applications that make a difference.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-8 sm:mb-12 px-4 sm:px-0"
+            >
+              <motion.a
+                href="#projects"
+                className="btn-glow text-dark-900 font-semibold w-full sm:w-auto text-center"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={(e) => {
+                  e.preventDefault()
+                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+                }}
+              >
+                <span className="relative z-10">View My Work</span>
+              </motion.a>
+              <motion.a
+                href="#contact"
+                className="btn-outline w-full sm:w-auto text-center"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={(e) => {
+                  e.preventDefault()
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                }}
+              >
+                Get in Touch
+              </motion.a>
+            </motion.div>
+
+            {/* Social Links */}
+            <motion.div
+              variants={itemVariants}
+              className="flex items-center justify-center lg:justify-start gap-4 sm:gap-6"
+            >
+              {[
+                { href: 'https://github.com/denuwan9', icon: FiGithub, label: 'GitHub' },
+                { href: 'https://www.linkedin.com/in/denuwan-yasanga-9a4442309/', icon: FiLinkedin, label: 'LinkedIn' },
+                { href: 'mailto:hello@denuwan.dev', icon: FiMail, label: 'Email' },
+              ].map((social) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  target={social.href.startsWith('mailto') ? undefined : '_blank'}
+                  rel={social.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+                  className="p-3 rounded-full bg-dark-700/50 border border-white/10 text-gray-400 hover:text-neon-cyan hover:border-neon-cyan/50 transition-all duration-300"
+                  whileHover={{ scale: 1.1, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                  aria-label={social.label}
+                >
+                  <social.icon className="w-5 h-5" />
+                </motion.a>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Right side - Profile Image */}
+          <motion.div
+            variants={itemVariants}
+            className="flex-shrink-0 order-1 lg:order-2"
+          >
+            <div className="relative">
+              <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-neon-cyan via-neon-purple to-neon-pink p-1.5 animate-glow">
+                <img
+                  src="/Portfolio_Denuwan/profile.png"
+                  alt="Denuwan Yasanga"
+                  className="w-full h-full rounded-full object-cover bg-dark-800"
+                  onError={(e) => {
+                    e.target.style.display = 'none'
+                    e.target.nextSibling.style.display = 'flex'
+                  }}
+                />
+                <div className="w-full h-full rounded-full bg-dark-800 items-center justify-center hidden absolute inset-1.5">
+                  <span className="text-5xl sm:text-6xl font-display font-bold text-gradient">DY</span>
+                </div>
+              </div>
+              {/* Online status indicator */}
+              <div className="absolute bottom-4 right-4 w-8 h-8 sm:w-10 sm:h-10 bg-neon-green rounded-full border-4 border-dark-900 animate-pulse" />
+              {/* Decorative ring */}
+              <motion.div
+                className="absolute -inset-4 rounded-full border-2 border-neon-cyan/20"
+                animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0.8, 0.5] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              />
+            </div>
+          </motion.div>
+        </div>
       </motion.div>
 
       {/* Scroll indicator */}

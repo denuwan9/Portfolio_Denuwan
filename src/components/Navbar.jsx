@@ -74,8 +74,8 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="text-2xl font-display font-bold text-gradient">
-                Denuwan
+              <span className="text-4xl font-display font-bold text-gradient">
+                DY
               </span>
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-neon-cyan to-neon-purple group-hover:w-full transition-all duration-300" />
             </motion.a>

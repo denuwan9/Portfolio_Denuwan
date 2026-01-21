@@ -91,7 +91,7 @@ const About = () => {
                     <div className="relative flex-shrink-0">
                       <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-neon-cyan to-neon-purple p-0.5">
                         <img
-                          src="/Portfolio_Denuwan/profile.jpg"
+                          src="/Portfolio_Denuwan/profile.png"
                           alt="Denuwan Yasanga"
                           className="w-full h-full rounded-2xl object-cover"
                           onError={(e) => {
@@ -148,7 +148,7 @@ const About = () => {
               <div className="grid grid-cols-3 gap-2 sm:gap-4">
                 {[
                   { number: '3+', label: 'Years Experience' },
-                  { number: '20+', label: 'Projects Completed' },
+                  { number: '10+', label: 'Projects Completed' },
                   { number: '100%', label: 'Client Satisfaction' },
                 ].map((stat) => (
                   <motion.div
