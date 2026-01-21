@@ -1,0 +1,16 @@
+# robots.txt for Denuwan Yasanga Portfolio
+# https://denuwan.dev
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://denuwan.dev/sitemap.xml
+
+# Crawl-delay for politeness
+Crawl-delay: 1
+
+# Block access to sensitive directories (if any)
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
