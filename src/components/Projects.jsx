@@ -45,7 +45,7 @@ const projects = [
     title: 'SLIIT Nexar – AI-Powered Career Path System',
     description:
       'Developed an intelligent career simulation and resource management platform for SLIIT students. Nexar leverages advanced AI reasoning to analyze student profiles and generate personalized career trajectories, university resource links, and industry readiness scores.',
-    image: `${BASE_URL}projects/open-library-redesign.jpeg`,
+    image: `${BASE_URL}projects/Sliitnexar.png`,
     tags: ['AI/ML Integration', 'MERN Stack', 'Gemini/Groq API', 'Career Analytics', 'Full-Stack Dev'],
     github: 'https://github.com/denuwan9/SLIIT-Nexar_Caree-Path-Help-System.git',
     live: 'https://sliit-nexar-career-path-help-system.vercel.app',

@@ -13,7 +13,7 @@ const experiences = [
   {
     id: 1,
     type: 'work',
-    title: 'Developer (Co -Founder)',
+    title: 'Full Stack Developer (Founder)',
     company: 'Pshyco Lab IT Solutions',
     location: 'Remote',
     period: '2026 - Present',
