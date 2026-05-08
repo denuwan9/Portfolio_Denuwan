@@ -130,7 +130,7 @@ const Contact = () => {
         <motion.div ref={ref}>
           {/* Section header */}
           <motion.div
-            className="text-center mb-8 sm:mb-12 md:mb-16"
+            className={`text-center mb-8 sm:mb-12 md:mb-16 reveal-skew ${inView ? 'in-view' : ''}`}
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}

@@ -114,8 +114,15 @@ const SkillCard = ({ skill, index, isActive }) => {
       transition={{ delay: index * 0.05, duration: 0.3 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onMouseMove={(e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+        e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
+      }}
     >
-      <div className="glass-card p-3 sm:p-4 flex flex-col items-center gap-2 sm:gap-3 transition-all duration-300 hover:border-neon-cyan/30">
+      <div className="glass-card p-3 sm:p-4 flex flex-col items-center gap-2 sm:gap-3 transition-all duration-300 hover:border-neon-cyan/30 hover-spotlight overflow-hidden">
         {/* Icon */}
         <motion.div
           className="text-2xl sm:text-3xl text-gray-400 group-hover:text-neon-cyan transition-colors duration-300"
@@ -200,7 +207,7 @@ const Skills = () => {
         >
           {/* Section header */}
           <motion.div
-            className="text-center mb-10 sm:mb-16"
+            className={`text-center mb-10 sm:mb-16 reveal-skew ${inView ? 'in-view' : ''}`}
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}

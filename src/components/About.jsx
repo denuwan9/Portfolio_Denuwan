@@ -69,7 +69,10 @@ const About = () => {
           animate={inView ? 'visible' : 'hidden'}
         >
           {/* Section header */}
-          <motion.div variants={itemVariants} className="text-center mb-10 sm:mb-16">
+          <motion.div 
+            variants={itemVariants} 
+            className={`text-center mb-10 sm:mb-16 reveal-skew ${inView ? 'in-view' : ''}`}
+          >
             <span className="text-neon-cyan font-mono text-xs sm:text-sm uppercase tracking-wider">
               About Me
             </span>
@@ -88,8 +91,12 @@ const About = () => {
                 <div className="glass-card p-4 sm:p-6 md:p-8">
                   <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 text-center sm:text-left">
                     {/* Profile Image */}
-                    <div className="relative flex-shrink-0">
-                      <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-neon-cyan to-neon-purple p-0.5">
+                    <motion.div 
+                      className="relative flex-shrink-0"
+                      whileHover={{ rotateY: 10, rotateX: -10, scale: 1.05 }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                    >
+                      <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-neon-cyan to-neon-purple p-0.5 shadow-neon-cyan/20">
                         <img
                           src={`${import.meta.env.BASE_URL}profile-img/profile.png`}
                           alt="Denuwan Yasanga"
@@ -105,8 +112,8 @@ const About = () => {
                           </span>
                         </div>
                       </div>
-                      <div className="absolute -bottom-2 -right-2 w-5 h-5 sm:w-6 sm:h-6 bg-neon-green rounded-full border-4 border-dark-800" />
-                    </div>
+                      <div className="absolute -bottom-2 -right-2 w-5 h-5 sm:w-6 sm:h-6 bg-neon-green rounded-full border-4 border-dark-800 shadow-lg" />
+                    </motion.div>
 
                     <div>
                       <h3 className="text-xl sm:text-2xl font-display font-bold text-white mb-1">
@@ -171,12 +178,19 @@ const About = () => {
               {highlights.map((item, index) => (
                 <motion.div
                   key={item.title}
-                  className="glass-card p-4 sm:p-6 group relative"
+                  className="glass-card p-4 sm:p-6 group relative hover-spotlight overflow-hidden"
                   whileHover={{ scale: 1.02, y: -5 }}
                   transition={{ type: 'spring', stiffness: 400 }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   style={{ transitionDelay: `${index * 100}ms` }}
+                  onMouseMove={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+                    e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
+                  }}
                 >
                   {/* Icon */}
                   <div

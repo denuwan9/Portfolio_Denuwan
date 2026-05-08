@@ -12,6 +12,7 @@ const About = lazy(() => import('./components/About'))
 const Skills = lazy(() => import('./components/Skills'))
 const Projects = lazy(() => import('./components/Projects'))
 const Experience = lazy(() => import('./components/Experience'))
+const Certificates = lazy(() => import('./components/Certificates'))
 const Contact = lazy(() => import('./components/Contact'))
 const Footer = lazy(() => import('./components/Footer'))
 const CustomCursor = lazy(() => import('./components/CustomCursor'))
@@ -130,8 +131,7 @@ function App() {
             {/* Scroll progress indicator */}
             <ScrollProgress />
 
-            {/* Noise texture overlay */}
-            <div className="noise-overlay" aria-hidden="true" />
+
 
             {/* Navigation */}
             <Navbar />
@@ -160,6 +160,10 @@ function App() {
 
               <Suspense fallback={<SectionLoader />}>
                 <Experience />
+              </Suspense>
+              
+              <Suspense fallback={<SectionLoader />}>
+                <Certificates />
               </Suspense>
 
               <Suspense fallback={<SectionLoader />}>

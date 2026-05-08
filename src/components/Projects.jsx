@@ -109,25 +109,29 @@ const ProjectCard = ({ project, index }) => {
   return (
     <motion.div
       ref={cardRef}
-      className={`relative perspective-1000 ${
+      className={`relative perspective-1000 h-full ${
         project.featured ? 'md:col-span-2 lg:col-span-1' : ''
       }`}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
     >
       <motion.div
-        className="relative glass-card overflow-hidden h-full preserve-3d"
+        className="relative glass-card overflow-hidden h-full preserve-3d hover-spotlight"
         style={{
           rotateX: isHovered ? rotateX : 0,
           rotateY: isHovered ? rotateY : 0,
         }}
         whileHover={{ z: 50 }}
         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+        onMouseMove={(e) => {
+          handleMouseMove(e);
+          const rect = e.currentTarget.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+          e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
+        }}
       >
         {/* Project image/gradient background */}
         <div
@@ -266,7 +270,7 @@ const Projects = () => {
         <motion.div ref={ref}>
           {/* Section header */}
           <motion.div
-            className="text-center mb-8 sm:mb-12 md:mb-16"
+            className={`text-center mb-8 sm:mb-12 md:mb-16 reveal-skew ${inView ? 'in-view' : ''}`}
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
@@ -285,9 +289,11 @@ const Projects = () => {
           </motion.div>
 
           {/* Projects grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 reveal-perspective`}>
             {displayedProjects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
+              <div key={project.id} className={`reveal-perspective-item ${inView ? 'visible' : ''}`} style={{ transitionDelay: `${index * 100}ms` }}>
+                <ProjectCard project={project} index={index} />
+              </div>
             ))}
           </div>
 

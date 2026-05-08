@@ -2,6 +2,7 @@ import { useEffect, useState, Suspense, lazy } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { FiGithub, FiLinkedin, FiArrowDown, FiMail } from 'react-icons/fi'
+import MagneticButton from './MagneticButton'
 
 // Lazy load heavy 3D component for better performance
 const ParticleBackground = lazy(() => import('./ParticleBackground'))
@@ -190,30 +191,30 @@ const Hero = () => {
               variants={itemVariants}
               className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-8 sm:mb-12 px-4 sm:px-0"
             >
-              <motion.a
-                href="#projects"
-                className="btn-glow text-dark-900 font-semibold w-full sm:w-auto text-center"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={(e) => {
-                  e.preventDefault()
-                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
-                }}
-              >
-                <span className="relative z-10">View My Work</span>
-              </motion.a>
-              <motion.a
-                href="#contact"
-                className="btn-outline w-full sm:w-auto text-center"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={(e) => {
-                  e.preventDefault()
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-                }}
-              >
-                Get in Touch
-              </motion.a>
+              <MagneticButton className="w-full sm:w-auto">
+                <a
+                  href="#projects"
+                  className="btn-glow text-dark-900 font-semibold w-full block text-center"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+                  }}
+                >
+                  <span className="relative z-10">View My Work</span>
+                </a>
+              </MagneticButton>
+              <MagneticButton className="w-full sm:w-auto">
+                <a
+                  href="#contact"
+                  className="btn-outline w-full block text-center"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                  }}
+                >
+                  Get in Touch
+                </a>
+              </MagneticButton>
             </motion.div>
 
             {/* Social Links */}
@@ -277,21 +278,54 @@ const Hero = () => {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20"
+        className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 1.5 }}
+        transition={{ duration: 0.8, delay: 2 }}
         style={{ opacity }}
       >
         <motion.button
           onClick={scrollToAbout}
-          className="flex flex-col items-center gap-1 text-gray-400 hover:text-neon-cyan transition-colors touch-manipulation"
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="group relative flex flex-col items-center gap-2 touch-manipulation"
           aria-label="Scroll to about section"
         >
-          <span className="text-xs font-mono uppercase tracking-wider hidden sm:block">Scroll</span>
-          <FiArrowDown className="w-5 h-5" />
+          {/* 3D-style mouse icon */}
+          <div className="w-6 h-10 sm:w-7 sm:h-12 rounded-full border-2 border-gray-400/50 flex justify-center p-1.5 group-hover:border-neon-cyan/50 transition-colors duration-300">
+            <motion.div
+              className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-b from-neon-cyan to-neon-purple rounded-full"
+              animate={{
+                y: [0, 16, 0],
+                opacity: [1, 0.5, 1],
+                scale: [1, 0.8, 1],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          </div>
+
+          {/* Animated scroll text */}
+          <div className="overflow-hidden h-4 flex flex-col items-center">
+            <motion.span 
+              className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-gray-500 group-hover:text-neon-cyan transition-colors duration-300"
+              animate={{
+                y: [20, 0, -20],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                times: [0, 0.5, 1],
+                ease: "easeInOut",
+              }}
+            >
+              Scroll
+            </motion.span>
+          </div>
+
+          {/* Glow effect */}
+          <div className="absolute -inset-4 bg-neon-cyan/5 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </motion.button>
       </motion.div>
 

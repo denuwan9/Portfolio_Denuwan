@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import MagneticButton from './MagneticButton'
 import {
   FiBriefcase,
   FiBook,
@@ -127,10 +128,17 @@ const TimelineItem = ({ item, index, isLeft }) => {
       {/* Content */}
       <div className={`w-full pl-10 md:pl-0 md:w-1/2 ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}>
         <motion.div
-          className="glass-card p-4 sm:p-6 relative overflow-hidden group cursor-pointer"
+          className="glass-card p-4 sm:p-6 relative overflow-hidden group cursor-pointer hover-spotlight"
           onClick={() => setIsExpanded(!isExpanded)}
           whileHover={{ y: -5 }}
           transition={{ type: 'spring', stiffness: 400 }}
+          onMouseMove={(e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+            e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
+          }}
         >
           {/* Type badge */}
           <div
@@ -263,7 +271,7 @@ const Experience = () => {
         <motion.div ref={ref}>
           {/* Section header */}
           <motion.div
-            className="text-center mb-8 sm:mb-12 md:mb-16"
+            className={`text-center mb-8 sm:mb-12 md:mb-16 reveal-skew ${inView ? 'in-view' : ''}`}
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
@@ -339,33 +347,33 @@ const Experience = () => {
 
           {/* Download CV button */}
           <motion.div
-            className="text-center mt-10 sm:mt-16"
+            className="text-center mt-10 sm:mt-16 flex justify-center"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.6 }}
           >
-            <motion.a
-              href={`${import.meta.env.BASE_URL}resume.pdf`}
-              download="resume.pdf"
-              className="btn-outline inline-flex items-center gap-2 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span>Download Resume</span>
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <MagneticButton className="inline-block">
+              <a
+                href={`${import.meta.env.BASE_URL}resume.pdf`}
+                download="resume.pdf"
+                className="btn-outline inline-flex items-center gap-2 text-sm sm:text-base px-6 py-3"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
-            </motion.a>
+                <span>Download Resume</span>
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+              </a>
+            </MagneticButton>
           </motion.div>
         </motion.div>
       </div>
