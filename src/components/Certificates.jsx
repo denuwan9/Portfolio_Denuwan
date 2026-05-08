@@ -7,7 +7,7 @@ import MagneticButton from './MagneticButton'
 const certificates = [
   {
     id: 1,
-    title: "SpringBoot Certificate",
+    title: "Certificate of SpringBoot Bootcamp",
     issuer: "STEMLink",
     date: "2026-04-07",
     link: "https://credsverse.com/credentials/5a95522d-d0ae-429a-9cf5-57cd79e66f34",
