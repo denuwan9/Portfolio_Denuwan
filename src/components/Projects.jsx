@@ -19,14 +19,15 @@ const projects = [
   },
   {
     id: 2,
-    title: 'Student Management System',
+    title: 'SLIIT Nexar – AI-Powered Career Path System',
     description:
-      '"Built a Student Management System for managing student records and workflows, focusing on clean code, scalability, and backend development with OOP and Git.',
-    image: `${BASE_URL}projects/student-management-system.jpeg`,
-    tags: ['C#', 'SQL', 'OOP', 'CUD Operations', 'Validation', 'Git'],
-    github: 'https://github.com/denuwan9/StudentManagmentSystem.git',
+      'Developed an intelligent career simulation and resource management platform for SLIIT students. Nexar leverages advanced AI reasoning to analyze student profiles and generate personalized career trajectories, university resource links, and industry readiness scores.',
+    image: `${BASE_URL}projects/Sliitnexar.png`,
+    tags: ['AI/ML Integration', 'MERN Stack', 'Gemini/Groq API', 'Career Analytics', 'Full-Stack Dev'],
+    github: 'https://github.com/denuwan9/SLIIT-Nexar_Caree-Path-Help-System.git',
+    live: 'https://sliit-nexar-career-path-help-system.vercel.app',
     featured: true,
-    color: '#bf00ff',
+    color: '#00ff80',
   },
   {
     id: 3,
@@ -42,15 +43,14 @@ const projects = [
   },
   {
     id: 4,
-    title: 'SLIIT Nexar – AI-Powered Career Path System',
+    title: 'Student Management System',
     description:
-      'Developed an intelligent career simulation and resource management platform for SLIIT students. Nexar leverages advanced AI reasoning to analyze student profiles and generate personalized career trajectories, university resource links, and industry readiness scores.',
-    image: `${BASE_URL}projects/Sliitnexar.png`,
-    tags: ['AI/ML Integration', 'MERN Stack', 'Gemini/Groq API', 'Career Analytics', 'Full-Stack Dev'],
-    github: 'https://github.com/denuwan9/SLIIT-Nexar_Caree-Path-Help-System.git',
-    live: 'https://sliit-nexar-career-path-help-system.vercel.app',
+      '"Built a Student Management System for managing student records and workflows, focusing on clean code, scalability, and backend development with OOP and Git.',
+    image: `${BASE_URL}projects/student-management-system.jpeg`,
+    tags: ['C#', 'SQL', 'OOP', 'CUD Operations', 'Validation', 'Git'],
+    github: 'https://github.com/denuwan9/StudentManagmentSystem.git',
     featured: false,
-    color: '#00ff80',
+    color: '#bf00ff',
   },
   {
     id: 5,
